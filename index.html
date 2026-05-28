@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetHubX - India's First Shared Family Petcare Ecosystem</title>
+    <!-- Tailwind CSS CDN for modern UI utility styling -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Poppins for friendly, ultra-premium typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,18 +14,14 @@
         body { font-family: 'Poppins', sans-serif; }
         .squircle { border-radius: 2rem; }
         
-        /* High-Quality Custom Pet Animations */
+        /* Smooth, non-overlapping floating animations */
         @keyframes float-slow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(3deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
         }
         @keyframes float-reverse {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(12px) rotate(-4deg); }
-        }
-        @keyframes bounce-playful {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-8px) scale(1.05); }
+            50% { transform: translateY(10px) rotate(-4deg); }
         }
         @keyframes wiggle {
             0%, 100% { transform: rotate(-3deg); }
@@ -32,21 +30,21 @@
         
         .animate-float-1 { animation: float-slow 6s ease-in-out infinite; }
         .animate-float-2 { animation: float-reverse 7s ease-in-out infinite; }
-        .animate-bounce-pet { animation: bounce-playful 4s ease-in-out infinite; }
         .animate-wiggle-tail { animation: wiggle 1.5s ease-in-out infinite; }
         
-        /* Fresh Interactive Hover States */
+        /* Fresh Card Hover Effects */
         .interactive-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .interactive-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 30px -10px rgba(244, 63, 94, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(244, 63, 94, 0.12);
         }
     </style>
 </head>
 <body class="bg-[#FFFDF9] text-neutral-800 antialiased selection:bg-rose-200 overflow-x-hidden">
 
+    <!-- Header Navigation Bar -->
     <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b-4 border-neutral-900 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-2 text-3xl font-black text-neutral-900 tracking-tight">
@@ -58,34 +56,40 @@
         </div>
     </header>
 
+    <!-- Main Hero Container (Above the Fold) -->
     <main class="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
         
-        <div class="absolute top-10 left-4 text-5xl opacity-20 animate-float-1">Bone 🦴</div>
-        <div class="absolute top-40 right-10 text-6xl opacity-20 animate-float-2">Ball 🎾</div>
-        <div class="absolute bottom-10 left-12 text-5xl opacity-20 animate-float-2">Yarn 🧶</div>
+        <!-- Clean Floating Decorative Elements (No overlapping text blocks) -->
+        <div class="absolute top-10 left-4 text-4xl opacity-30 animate-float-1 select-none">🦴</div>
+        <div class="absolute top-40 right-10 text-4xl opacity-30 animate-float-2 select-none">🎾</div>
+        <div class="absolute bottom-10 left-12 text-4xl opacity-30 animate-float-2 select-none">🧶</div>
 
         <div class="text-center max-w-4xl mx-auto mb-16 relative">
-            <div class="hidden lg:block absolute -left-20 top-10 text-7xl animate-float-1 select-none">Cat 🐱✨</div>
-            <div class="hidden lg:block absolute -right-20 top-14 text-7xl animate-float-2 select-none">Dog 🐶⚡</div>
+            <!-- Safely spaced floating pets for desktop screens -->
+            <div class="hidden xl:block absolute -left-16 top-12 text-6xl animate-float-1 select-none">🐱✨</div>
+            <div class="hidden xl:block absolute -right-16 top-16 text-6xl animate-float-2 select-none">🐶⚡</div>
 
-            <div class="inline-flex items-center gap-2 bg-[#00F5D4]/20 text-neutral-900 border-2 border-neutral-900 font-extrabold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-4 animate-pulse">
-                🛠️ DEVELOPER PRE-VIEW & WAITLIST LIVE
+            <div class="inline-flex items-center gap-2 bg-[#00F5D4]/20 text-neutral-900 border-2 border-neutral-900 font-extrabold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-6">
+                🛠️ PRE-LAUNCH WAITLIST LIVE
             </div>
+            
             <h1 class="text-4xl md:text-6xl font-black text-neutral-900 tracking-tight leading-tight mb-6">
-                India's first shared family petcare ecosystem with a <span class="bg-gradient-to-r from-[#FF5A5F] via-[#FFB800] to-[#00F5D4] bg-clip-text text-transparent px-2">built-in emergency shield!</span>
+                India's first shared family petcare ecosystem with a <span class="bg-gradient-to-r from-[#FF5A5F] via-[#FFB800] to-[#00F5D4] bg-clip-text text-transparent">built-in emergency shield!</span>
             </h1>
             <p class="text-lg md:text-xl text-neutral-600 font-bold max-w-2xl mx-auto leading-relaxed">
                 We are building the future of pet parenting. No more family arguments over who fed the dog. Get on the waitlist to sync routines effortlessly and lock in heavy early-bird protection.
             </p>
         </div>
 
+        <!-- Hero Split-Layout Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
             
+            <!-- Left Side: Interactive Profile Creator (Waitlist) -->
             <div id="join-form" class="lg:col-span-6 bg-white border-4 border-neutral-900 squircle p-8 shadow-[8px_8px_0px_0px_#171717] relative overflow-hidden">
                 <h3 class="text-2xl font-black text-neutral-900 mb-2 flex items-center gap-2">
                     ✨ Secure Your Founder's Slot
                 </h3>
-                <p class="text-xs font-bold text-neutral-500 mb-6">No payment required right now. Pay only when the app goes live to unlock your locked perks!</p>
+                <p class="text-xs font-bold text-neutral-500 mb-6">No payment required right now. Pay only when the app goes live to unlock your locked-in benefits!</p>
                 
                 <form onsubmit="handleFormSubmit(event)" class="space-y-5">
                     <div class="grid grid-cols-2 gap-4">
@@ -121,9 +125,10 @@
                 </div>
             </div>
 
+            <!-- Right Side: Founder's Club Box -->
             <div class="lg:col-span-6 bg-gradient-to-br from-[#FFF9E6] to-[#FFF3E0] border-4 border-neutral-900 squircle p-8 shadow-[8px_8px_0px_0px_#171717] relative overflow-hidden">
                 <span class="inline-flex items-center gap-1 bg-[#FFB800] text-neutral-950 text-xs font-black px-4 py-2 rounded-full border-2 border-neutral-900 tracking-wider uppercase mb-5 shadow-sm">
-                    🚨 EXCLUSIVE FOR THE FIRST 999 WAITLIST MEMBERS
+                    🚨 EXCLUSIVE FOR THE FIRST 999 MEMBERS
                 </span>
                 
                 <div class="space-y-4 mb-6">
@@ -144,11 +149,12 @@
                     </div>
                 </div>
 
+                <!-- Clean, Understandable Deal Rule Box -->
                 <div class="bg-neutral-900 text-white p-5 rounded-2xl border-3 border-neutral-900 mb-6 space-y-3">
-                    <p class="text-sm font-black text-[#FFB800]">⚠️ How the Psychological Discount works:</p>
+                    <p class="text-sm font-black text-[#FFB800]">📢 How the Early-Bird Deal Works:</p>
                     <div class="text-xs text-neutral-300 space-y-2 font-medium">
-                        <p class="flex items-start gap-1">🟢 <span class="text-white font-bold">If you join this ₹99 launch cohort today:</span> You unlock the exclusive <b>₹3,499/year</b> pricing structure for life when the insurance shield goes active.</p>
-                        <p class="flex items-start gap-1">🔴 <span class="text-neutral-400 font-bold">If you skip this waitlist:</span> You miss the cohort frame and will pay the full standard retail price of <b>~~₹4,999/year~~</b> later.</p>
+                        <p class="flex items-start gap-1">🟢 <span class="text-white font-bold">Secure your waitlist slot today:</span> You lock in the permanent special rate of <b>₹3,499/year</b> for your pet's insurance shield when it opens up.</p>
+                        <p class="flex items-start gap-1">🔴 <span class="text-neutral-400 font-bold">If you skip this cohort frame:</span> Your profile won't have early-bird tags, and you will have to pay the standard retail rate of <b>~~₹4,999/year~~</b> later.</p>
                     </div>
                 </div>
 
@@ -164,8 +170,9 @@
         </div>
     </main>
 
+    <!-- Section 2: Product Vision Concept Previews -->
     <section class="bg-neutral-900 text-white py-20 px-6 border-t-4 border-b-4 border-neutral-900 relative">
-        <div class="absolute -top-6 right-20 text-4xl animate-bounce-pet">Parrot 🦜</div>
+        <div class="absolute -top-6 right-20 text-4xl animate-bounce-pet select-none">Parrot 🦜</div>
         <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-xs font-black tracking-widest text-[#FFB800] uppercase bg-[#FFB800]/10 px-3 py-1 rounded-md border border-neutral-700">THE PRODUCT VISION</span>
@@ -174,6 +181,7 @@
                 </h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Dashboard Mockup -->
                 <div class="bg-neutral-800 border-3 border-neutral-700 p-8 rounded-3xl flex flex-col justify-between shadow-inner">
                     <div>
                         <div class="flex items-center justify-between">
@@ -189,6 +197,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Vault Mockup -->
                 <div class="bg-neutral-800 border-3 border-neutral-700 p-8 rounded-3xl flex flex-col justify-between shadow-inner">
                     <div>
                         <div class="flex items-center justify-between">
@@ -208,28 +217,29 @@
         </div>
     </section>
 
+    <!-- Section 3: Pain Points -->
     <section class="max-w-7xl mx-auto px-6 py-20 relative">
-        <div class="absolute bottom-5 right-10 text-5xl animate-float-1">Hamster 🐹</div>
+        <div class="absolute bottom-5 right-10 text-5xl animate-float-1 select-none">Hamster 🐹</div>
         <h2 class="text-3xl md:text-5xl font-black text-neutral-900 tracking-tight text-center mb-16">
             "Did you feed the dog?" shouldn't be a daily argument.
         </h2>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="bg-white p-8 rounded-3xl border-3 border-neutral-900 shadow-[4px_4px_0px_0px_#171717] interactive-card">
-                <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl mb-6 border-2 border-neutral-900 animate-bounce-pet">🍕</div>
+                <div class="w-14 h-14 bg-rose-100 rounded-2xl flex items-center justify-center text-3xl mb-6 border-2 border-neutral-900">🍕</div>
                 <h3 class="text-xl font-black text-neutral-900 mb-3">The Double-Feed Dilemma</h3>
                 <p class="text-neutral-600 text-sm font-medium leading-relaxed">
                     You feed them early. Your partner walks into those ultimate puppy-dog eyes 45 minutes later and fills the bowl again. Accidental overfeeding strains digestion and targets long-term metabolic health.
                 </p>
             </div>
             <div class="bg-white p-8 rounded-3xl border-3 border-neutral-900 shadow-[4px_4px_0px_0px_#171717] interactive-card">
-                <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl mb-6 border-2 border-neutral-900 animate-float-1">⏰</div>
+                <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl mb-6 border-2 border-neutral-900">⏰</div>
                 <h3 class="text-xl font-black text-neutral-900 mb-3">The Forgotten Pill Panic</h3>
                 <p class="text-neutral-600 text-sm font-medium leading-relaxed">
                     Managing precise schedules for treatments, supplements, or clinical tracking parameters gets stressful. When life gets fast-paced, critical tracking steps get skipped entirely.
                 </p>
             </div>
             <div class="bg-white p-8 rounded-3xl border-3 border-neutral-900 shadow-[4px_4px_0px_0px_#171717] interactive-card">
-                <div class="w-14 h-14 bg-[#00F5D4]/10 rounded-2xl flex items-center justify-center text-3xl mb-6 border-2 border-neutral-900 animate-float-2">🛡️</div>
+                <div class="w-14 h-14 bg-[#00F5D4]/10 rounded-2xl flex items-center justify-center text-3xl mb-6 border-2 border-neutral-900">🛡️</div>
                 <h3 class="text-xl font-black text-neutral-900 mb-3">The Midnight Vet Shock</h3>
                 <p class="text-neutral-600 text-sm font-medium leading-relaxed">
                     Sudden health emergencies force instant financial decisions under pure emotional pressure. Specialized clinic care can rack up thousands out-of-pocket in mere minutes.
@@ -238,6 +248,7 @@
         </div>
     </section>
 
+    <!-- Section 4: Upcoming Value Highlights Grid -->
     <section class="bg-[#E6F4EA]/50 py-16 px-6 border-t-4 border-b-4 border-neutral-900">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -247,7 +258,7 @@
                     <p class="text-sm text-neutral-600 font-bold">Real-time sync ensures no accidental duplication or missed tasks.</p>
                 </div>
                 <div class="p-4 flex flex-col items-center">
-                    <p class="text-4xl mb-3 animate-bounce-pet">📁</p>
+                    <p class="text-4xl mb-3 animate-wiggle-tail origin-bottom">📁</p>
                     <h4 class="text-lg font-black text-neutral-900 mb-2">Unlimited Storage Vault</h4>
                     <p class="text-sm text-neutral-600 font-bold">Secure digital repository tracking clinical logs and biometric records.</p>
                 </div>
@@ -260,12 +271,14 @@
         </div>
     </section>
 
+    <!-- Section 5: Final Urgency Block -->
     <section class="max-w-4xl mx-auto px-6 py-20 text-center relative">
         <div class="absolute top-10 left-0 text-6xl animate-float-2 select-none">Rabbit 🐇</div>
         <h2 class="text-3xl md:text-5xl font-black text-neutral-900 tracking-tight mb-4">
             The First 999 Cohort is Filling Fast. Let's Lock In Your Slot!
         </h2>
         
+        <!-- Dog running to bone progress bar simulation -->
         <div class="max-w-md mx-auto my-10 bg-gray-200 h-6 rounded-full relative border-3 border-neutral-900 overflow-hidden shadow-inner">
             <div class="bg-gradient-to-r from-[#FF5A5F] to-[#FFB800] h-full w-[85%] rounded-full"></div>
             <span class="absolute right-4 top-0.5 text-xs font-black text-neutral-800 tracking-widest">85% CLAIMED 🦴</span>
@@ -279,6 +292,7 @@
         </p>
     </section>
 
+    <!-- Footer Content -->
     <footer class="bg-white border-t-4 border-neutral-900 py-10 px-6 text-center text-sm font-bold text-neutral-500">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p class="text-neutral-800">PetHubX 🐾 — Proudly keeping tails wagging across the country.</p>
@@ -292,6 +306,7 @@
         </div>
     </footer>
 
+    <!-- Interactive Logic Script -->
     <script>
         function handleFormSubmit(e) {
             e.preventDefault();
