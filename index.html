@@ -17,22 +17,27 @@
         body { font-family: 'Poppins', sans-serif; }
         .squircle { border-radius: 2rem; }
         
-        /* Smooth, non-clipping floating animations for pure emojis */
-        @keyframes float-slow {
+        /* Smooth, fluid floating animations for pure emojis */
+        @keyframes float-1 {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(8deg); }
+            50% { transform: translateY(-25px) rotate(8deg); }
         }
-        @keyframes float-reverse {
+        @keyframes float-2 {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(18px) rotate(-10deg); }
+            50% { transform: translateY(20px) rotate(-12deg); }
+        }
+        @keyframes float-3 {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(10px) translateY(-15px); }
         }
         @keyframes wiggle {
             0%, 100% { transform: rotate(-3deg); }
             50% { transform: rotate(3deg); }
         }
         
-        .animate-float-1 { animation: float-slow 5s ease-in-out infinite; }
-        .animate-float-2 { animation: float-reverse 6s ease-in-out infinite; }
+        .floating-emoji-1 { animation: float-1 5s ease-in-out infinite; }
+        .floating-emoji-2 { animation: float-2 6s ease-in-out infinite; }
+        .floating-emoji-3 { animation: float-3 5.5s ease-in-out infinite; }
         .animate-wiggle-tail { animation: wiggle 1.5s ease-in-out infinite; }
         
         .interactive-card {
@@ -61,31 +66,31 @@
     <!-- Main Hero Container (Above the Fold) -->
     <main class="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
         
-        <!-- Floating Emojis Layer (Safely positioned on outer margins) -->
-        <div class="absolute top-6 left-6 text-5xl opacity-40 animate-float-1 select-none pointer-events-none">🦴</div>
-        <div class="absolute top-36 right-8 text-5xl opacity-40 animate-float-2 select-none pointer-events-none">🎾</div>
-        <div class="absolute bottom-6 left-10 text-5xl opacity-40 animate-float-2 select-none pointer-events-none">🧶</div>
-        <div class="absolute top-64 left-4 text-5xl opacity-30 animate-float-2 select-none pointer-events-none">⚡</div>
-        <div class="absolute top-80 right-12 text-5xl opacity-30 animate-float-1 select-none pointer-events-none">🌟</div>
+        <!-- Isolated Floating Emojis Layer (Absolute positioned on screen margins) -->
+        <div class="absolute top-8 left-4 md:left-12 text-5xl opacity-40 floating-emoji-1 select-none pointer-events-none z-0">🦴</div>
+        <div class="absolute top-24 right-4 md:right-16 text-5xl opacity-40 floating-emoji-2 select-none pointer-events-none z-0">自由💥</div>
+        <div class="absolute top-1/3 left-6 md:left-20 text-5xl opacity-30 floating-emoji-3 select-none pointer-events-none z-0">⚡</div>
+        <div class="absolute top-1/2 right-6 md:right-24 text-5xl opacity-30 floating-emoji-1 select-none pointer-events-none z-0">🌟</div>
+        <div class="absolute bottom-12 left-8 md:left-16 text-5xl opacity-40 floating-emoji-2 select-none pointer-events-none z-0">🧶</div>
 
         <div class="text-center max-w-4xl mx-auto mb-16 relative">
-            <!-- Flanking Large Hero Pet Emojis -->
-            <div class="hidden xl:block absolute -left-20 top-16 text-6xl animate-float-1 select-none pointer-events-none">🐱</div>
-            <div class="hidden xl:block absolute -right-20 top-20 text-6xl animate-float-2 select-none pointer-events-none">🐶</div>
+            <!-- Large Main Visual Emojis flanking the core header text -->
+            <div class="hidden xl:block absolute -left-24 top-20 text-7xl floating-emoji-1 select-none pointer-events-none">🐱</div>
+            <div class="hidden xl:block absolute -right-24 top-24 text-7xl floating-emoji-2 select-none pointer-events-none">🐶</div>
 
             <div class="inline-flex items-center gap-2 bg-[#00F5D4]/20 text-neutral-900 border-2 border-neutral-900 font-extrabold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-6">
                 🛠️ PRE-LAUNCH WAITLIST LIVE
             </div>
             
-            <h1 class="text-4xl md:text-6xl font-black text-neutral-900 tracking-tight leading-tight mb-6">
+            <h1 class="text-4xl md:text-6xl font-black text-neutral-900 tracking-tight leading-tight mb-6 relative z-10">
                 India's first shared family petcare ecosystem with a <span class="bg-gradient-to-r from-[#FF5A5F] via-[#FFB800] to-[#00F5D4] bg-clip-text text-transparent">built-in emergency shield!</span>
             </h1>
-            <p class="text-lg md:text-xl text-neutral-600 font-bold max-w-2xl mx-auto leading-relaxed">
+            <p class="text-lg md:text-xl text-neutral-600 font-bold max-w-2xl mx-auto leading-relaxed relative z-10">
                 We are building the future of pet parenting. No more family arguments over who fed the dog. Get on the waitlist to sync routines effortlessly and lock in heavy early-bird protection.
             </p>
 
             <!-- Centered Vector Animated Pet Asset -->
-            <div class="flex justify-center mt-6 select-none">
+            <div class="flex justify-center mt-6 select-none relative z-10">
                 <dotlottie-player src="https://lottie.host/790c6b12-9c97-400a-9d96-c67d344fa051/k0Zg1ZAnwN.json" background="transparent" speed="1" class="w-64 h-64" loop autoplay></dotlottie-player>
             </div>
         </div>
@@ -260,7 +265,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div class="p-4 flex flex-col items-center">
-                    <p class="text-4xl mb-3 animate-float-1">📱</p>
+                    <p class="text-4xl mb-3 floating-emoji-1">📱</p>
                     <h4 class="text-lg font-black text-neutral-900 mb-2">Co-Parenting Dashboard</h4>
                     <p class="text-sm text-neutral-600 font-bold">Real-time sync ensures no accidental duplication or missed tasks.</p>
                 </div>
@@ -270,7 +275,7 @@
                     <p class="text-sm text-neutral-600 font-bold">Secure digital repository tracking clinical logs and biometric records.</p>
                 </div>
                 <div class="p-4 flex flex-col items-center">
-                    <p class="text-4xl mb-3 animate-float-2">💬</p>
+                    <p class="text-4xl mb-3 floating-emoji-2">💬</p>
                     <h4 class="text-lg font-black text-neutral-900 mb-2">Smart Reminder Alerts</h4>
                     <p class="text-sm text-neutral-600 font-bold">High-priority alerts sent directly to your phone contextually.</p>
                 </div>
