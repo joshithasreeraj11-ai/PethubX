@@ -10,17 +10,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Lottie Player Script for High-Quality Animations -->
+    <!-- Lottie Player Script for High-Quality Vector Animations -->
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.1/dist/dotlottie-player.mjs" type="module"></script>
     
     <style>
         body { font-family: 'Poppins', sans-serif; }
         .squircle { border-radius: 2rem; }
         
+        /* High-Quality Pure CSS Floating Animations for Emojis */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(6deg); }
+        }
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(18px) rotate(-8deg); }
+        }
         @keyframes wiggle {
             0%, 100% { transform: rotate(-3deg); }
             50% { transform: rotate(3deg); }
         }
+        
+        .animate-float-1 { animation: float-slow 5s ease-in-out infinite; }
+        .animate-float-2 { animation: float-reverse 6s ease-in-out infinite; }
         .animate-wiggle-tail { animation: wiggle 1.5s ease-in-out infinite; }
         
         .interactive-card {
@@ -48,7 +60,19 @@
 
     <!-- Main Hero Container (Above the Fold) -->
     <main class="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
+        
+        <!-- Clean Floating Emojis Layer (Safely positioned outside the text boundaries) -->
+        <div class="absolute top-12 left-6 text-5xl opacity-40 animate-float-1 select-none pointer-events-none">🦴</div>
+        <div class="absolute top-48 right-12 text-5xl opacity-40 animate-float-2 select-none pointer-events-none">🎾</div>
+        <div class="absolute bottom-20 left-16 text-5xl opacity-40 animate-float-2 select-none pointer-events-none">🧶</div>
+        <div class="absolute top-72 left-8 text-5xl opacity-30 animate-float-2 select-none pointer-events-none">⚡</div>
+        <div class="absolute top-96 right-16 text-5xl opacity-30 animate-float-1 select-none pointer-events-none">✨</div>
+
         <div class="text-center max-w-4xl mx-auto mb-16 relative">
+            <!-- Flanking Hero Side-Emojis -->
+            <div class="hidden xl:block absolute -left-24 top-16 text-6xl animate-float-1 select-none pointer-events-none">🐱</div>
+            <div class="hidden xl:block absolute -right-24 top-20 text-6xl animate-float-2 select-none pointer-events-none">🐶</div>
+
             <div class="inline-flex items-center gap-2 bg-[#00F5D4]/20 text-neutral-900 border-2 border-neutral-900 font-extrabold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-6">
                 🛠️ PRE-LAUNCH WAITLIST LIVE
             </div>
@@ -60,7 +84,7 @@
                 We are building the future of pet parenting. No more family arguments over who fed the dog. Get on the waitlist to sync routines effortlessly and lock in heavy early-bird protection.
             </p>
 
-            <!-- Centered High-Quality Animated Hero Pet -->
+            <!-- Centered Vector Animated Pet Asset -->
             <div class="flex justify-center mt-6 select-none">
                 <dotlottie-player src="https://lottie.host/790c6b12-9c97-400a-9d96-c67d344fa051/k0Zg1ZAnwN.json" background="transparent" speed="1" class="w-64 h-64" loop autoplay></dotlottie-player>
             </div>
@@ -134,7 +158,7 @@
                     </div>
                 </div>
 
-                <!-- Clean Rules Breakdown -->
+                <!-- Clean, Clear Rule Book -->
                 <div class="bg-neutral-900 text-white p-5 rounded-2xl border-3 border-neutral-900 mb-6 space-y-3">
                     <p class="text-sm font-black text-[#FFB800]">📢 How the Early-Bird Deal Works:</p>
                     <div class="text-xs text-neutral-300 space-y-2 font-medium">
@@ -266,7 +290,7 @@
             <span class="absolute right-4 top-0.5 text-xs font-black text-neutral-800 tracking-widest">85% CLAIMED 🦴</span>
         </div>
 
-        <!-- Another Interactive Animated Cat for the final push -->
+        <!-- Secondary vector animated asset at the base -->
         <div class="flex justify-center mb-6 select-none">
             <dotlottie-player src="https://lottie.host/80c65ef4-33fa-4e78-9040-5e6080536fe0/487372Y3g4.json" background="transparent" speed="1" class="w-44 h-44" loop autoplay></dotlottie-player>
         </div>
