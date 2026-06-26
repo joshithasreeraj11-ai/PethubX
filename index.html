@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetHubX - Insurance Plans</title>
+    <title>PetHubX - Ultimate Pet Care Ecosystem</title>
     <style>
         :root {
             --navy-bg: #0B1B3D;
@@ -15,6 +15,10 @@
             --text-muted: #B0C4DE;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -24,7 +28,26 @@
             overflow-x: hidden;
         }
 
-        /* Navigation Bar Header */
+        /* Smooth Floating Animations for Dog Icons/Paws */
+        .floating-object {
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.18;
+            animation: floatSmooth 7s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+        .obj1 { top: 8%; left: 4%; font-size: 3.5rem; animation-delay: 0s; }
+        .obj2 { top: 28%; right: 6%; font-size: 4rem; animation-delay: 1.5s; }
+        .obj3 { top: 55%; left: 5%; font-size: 3.8rem; animation-delay: 3s; }
+        .obj4 { top: 82%; right: 7%; font-size: 4.5rem; animation-delay: 0.5s; }
+
+        @keyframes floatSmooth {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            100% { transform: translateY(-40px) rotate(25deg) scale(1.15); }
+        }
+
+        /* Navigation Bar */
         .navbar {
             background-color: rgba(11, 27, 61, 0.95);
             padding: 20px 40px;
@@ -43,71 +66,67 @@
             font-weight: 800;
             color: var(--text-light);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .logo span {
             color: var(--pink-main);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
+        .cta-nav-btn {
+            background-color: var(--pink-main);
+            color: #FFF;
+            padding: 10px 20px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
+            font-weight: 700;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--pink-main);
+        .cta-nav-btn:hover {
+            background-color: var(--pink-hover);
+            transform: scale(1.05);
         }
 
-        /* Insurance Section Layout */
-        .insurance-section {
-            padding: 80px 20px;
+        /* Main Structural Layout Containers */
+        .section-wrapper {
+            padding: 90px 20px;
             position: relative;
-            min-height: 80vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-        }
-
-        /* Floating Background Decorative Animations */
-        .floating-deco {
-            position: absolute;
-            user-select: none;
-            pointer-events: none;
-            opacity: 0.15;
-            animation: floatAround 8s ease-in-out infinite alternate;
-        }
-        .deco-paw1 { top: 15%; left: 8%; font-size: 3.5rem; animation-delay: 0s; }
-        .deco-paw2 { top: 75%; right: 10%; font-size: 4rem; animation-delay: 2s; }
-        .deco-bone1 { top: 20%; right: 12%; font-size: 3.5rem; animation-delay: 4s; }
-        .deco-bone2 { top: 80%; left: 10%; font-size: 3rem; animation-delay: 1s; }
-
-        @keyframes floatAround {
-            0% { transform: translateY(0) rotate(0deg) scale(1); }
-            100% { transform: translateY(-35px) rotate(25deg) scale(1.2); }
         }
 
         .container {
             max-width: 1100px;
             width: 100%;
             margin: 0 auto;
-            position: relative;
-            z-index: 10;
+            position: z-index: 5;
         }
 
-        .header-area {
+        .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            background: linear-gradient(to right, #FFF, var(--pink-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: -30px auto 50px auto;
+            line-height: 1.6;
+        }
+
+        /* Hero / Waitlist Top Area */
+        .hero-box {
+            text-align: center;
+            padding: 40px 0;
         }
 
         .badge {
@@ -124,280 +143,394 @@
             border: 1px solid rgba(255, 64, 129, 0.3);
         }
 
-        .title {
-            font-size: 3rem;
+        .hero-title {
+            font-size: 3.5rem;
             font-weight: 800;
-            margin: 0;
-            background: linear-gradient(to right, #FFFFFF, var(--pink-main));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            line-height: 1.2;
         }
 
-        /* Interactive Grid Layout */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            align-items: stretch;
-        }
-
-        /* Card Mechanics */
-        .pricing-card {
-            background-color: var(--navy-card);
-            border: 2px solid rgba(255, 255, 255, 0.05);
+        /* Waitlist Email Collection System Form */
+        .waitlist-form {
+            background: var(--navy-card);
+            border: 2px solid rgba(255, 64, 129, 0.3);
+            padding: 30px;
             border-radius: 24px;
-            padding: 45px 35px;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            max-width: 600px;
+            margin: 40px auto 0 auto;
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
-        .pricing-card:hover {
-            transform: translateY(-15px);
+        .waitlist-form h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: var(--blue-neon);
+        }
+
+        .form-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .form-group { flex-direction: column; }
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 16px 20px;
+            border-radius: 14px;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: var(--navy-bg);
+            color: #FFF;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .email-input:focus {
             border-color: var(--pink-main);
-            box-shadow: 0 20px 40px rgba(255, 64, 129, 0.25);
         }
 
-        .pricing-card.premium-card:hover {
-            border-color: var(--blue-neon);
-            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.25);
-        }
-
-        /* Animated Floating Pet Icons */
-        .card-mascot {
-            font-size: 3.5rem;
-            position: absolute;
-            top: -35px;
-            right: 30px;
-            animation: bounceMascot 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes bounceMascot {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-12px); }
-        }
-
-        .card-title {
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin: 15px 0 10px 0;
-            text-transform: uppercase;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* Pricing Block Structure */
-        .price-wrapper {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 20px 0;
-            margin-bottom: 30px;
-        }
-
-        .original-price {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            text-decoration: line-through;
-            opacity: 0.7;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .tier-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 64, 129, 0.1);
-            border-left: 4px solid var(--pink-main);
-            padding: 12px 15px;
-            border-radius: 0 12px 12px 0;
-            margin-bottom: 15px;
-        }
-
-        .premium-card .tier-box {
-            background: rgba(0, 229, 255, 0.1);
-            border-left-color: var(--blue-neon);
-        }
-
-        .offer-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-        }
-
-        .slots-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            background-color: var(--pink-main);
-            padding: 5px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .premium-card .slots-badge {
-            background-color: var(--blue-neon);
-            color: var(--navy-bg);
-        }
-
-        .next-tier {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .next-tier strong {
-            color: #FFFFFF;
-        }
-
-        /* Perks Checklists */
-        .perks-group {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 35px 0;
-        }
-
-        .perks-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        .perks-bullet {
-            margin-right: 12px;
-            font-size: 1.2rem;
-            display: inline-block;
-            animation: tailWag 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes tailWag {
-            0% { transform: rotate(-12deg); }
-            100% { transform: rotate(12deg); }
-        }
-
-        /* Call To Action Button */
-        .cta-button {
-            width: 100%;
-            padding: 18px;
+        .submit-btn {
+            background: linear-gradient(45deg, var(--pink-main), var(--pink-hover));
+            color: #FFF;
             border: none;
-            border-radius: 16px;
-            font-size: 1.1rem;
+            padding: 16px 30px;
+            border-radius: 14px;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            background: linear-gradient(45deg, var(--pink-main), var(--pink-hover));
-            color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 64, 129, 0.4);
+        }
+
+        /* The Problem Area Card Row */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: #1a0f24; /* Dark warning crimson/navy hybrid tint */
+            border: 1px solid rgba(239, 83, 80, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .problem-card:hover {
             transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
         }
 
-        .premium-card .cta-button {
-            background: linear-gradient(45deg, var(--blue-neon), #00B8D4);
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Core Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .feature-card {
+            background: var(--navy-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--blue-neon);
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: gentleWiggle 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleWiggle {
+            0% { transform: rotate(-8deg); }
+            100% { transform: rotate(8deg); }
+        }
+
+        /* Unified Dual Pricing Matrix Layout */
+        .pricing-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .matrix-card {
+            background: var(--navy-card);
+            border: 2px solid rgba(255,255,255,0.05);
+            border-radius: 22px;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .matrix-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--pink-main);
+        }
+
+        .matrix-card.insurance-type:hover {
+            border-color: var(--blue-neon);
+        }
+
+        .matrix-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--pink-main);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .matrix-card.insurance-type .matrix-badge {
+            background: var(--blue-neon);
             color: var(--navy-bg);
-            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
         }
 
-        .premium-card .cta-button:hover {
-            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.6);
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .main-price {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .sub-tier-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .matrix-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .matrix-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Simple Matching Navbar Link Structure -->
+    <!-- Floating Background Atmosphere Decors -->
+    <div class="floating-object obj1">🐶</div>
+    <div class="floating-object obj2">🐾</div>
+    <div class="floating-object obj3">🦴</div>
+    <div class="floating-object obj4">🐱</div>
+
+    <!-- Navigation Header Bar -->
     <nav class="navbar">
-        <a href="index.html" class="logo">🐾 PetHub<span>X</span></a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="features.html" class="active">Insurance Plans</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-        </div>
+        <a href="#" class="logo">🐾 PetHub<span>X</span></a>
+        <a href="#join" class="cta-nav-btn">Join Waitlist</a>
     </nav>
 
-    <!-- Main Pricing Ecosystem Section -->
-    <section class="insurance-section">
-        <!-- Floating Animations Setup -->
-        <div class="floating-deco deco-paw1">🐾</div>
-        <div class="floating-deco deco-paw2">🐾</div>
-        <div class="floating-deco deco-bone1">🦴</div>
-        <div class="floating-deco deco-bone2">🦴</div>
+    <!-- SECTION 1: HERO & ACTION WAITLIST -->
+    <section class="section-wrapper" id="join" style="padding-top: 60px;">
+        <div class="container hero-box">
+            <span class="badge">The Ultimate Pet Parenting Platform</span>
+            <h1 class="hero-title">Coordinated Pet Care,<br><span style="color: var(--pink-main);">Zero Communication Gaps.</span></h1>
+            <p class="section-subtitle">PetHubX is a synchronized collaborative SaaS ecosystem built for families to track health, share daily schedules, and unlock institutional pet coverage insurance.</p>
 
-        <div class="container">
-            <div class="header-area">
-                <span class="badge">Early-Bird Protection Tier</span>
-                <h2 class="title">Select Your PetHubX Protection Plan</h2>
+            <!-- Waitlist Form (Collects email client-side right out of the box) -->
+            <div class="waitlist-form">
+                <h3>🐾 Secure Your Early-Bird Priority Access Pass</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Be the first to claim exclusive pricing tiers upon our beta launch.</p>
+                <form onsubmit="alert('Thank you for joining the PetHubX waitlist! We will notify you at: ' + document.getElementById('userEmail').value); return false;">
+                    <div class="form-group">
+                        <input type="email" id="userEmail" class="email-input" placeholder="Enter your email address" required>
+                        <button type="submit" class="submit-btn">Get Early Access</button>
+                    </div>
+                </form>
             </div>
+        </div>
+    </section>
 
-            <div class="pricing-grid">
+    <!-- SECTION 2: RECOGNIZING THE PROBLEMS -->
+    <section class="section-wrapper" style="background-color: rgba(0,0,0,0.15);">
+        <div class="container">
+            <h2 class="section-title">The Pet Parenting Breakdown</h2>
+            <p class="section-subtitle">Managing a pet shouldn't feel like chaotic guesswork between family members.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🥣</div>
+                    <h3 style="color: #FF5252;">The Double Feeding Trap</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Miscommunication leads to accidental double-meals or forgotten walks. PetHubX keeps the whole family in sync instantly.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📁</div>
+                    <h3 style="color: #FF5252;">Scattered Health History</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Vaccination proofs, vet papers, and medicine scripts are scattered across chats and folders when you need them most.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3 style="color: #FF5252;">Shattering Emergency Costs</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Sudden accidents or surgical routines break bank accounts because standard pet security frameworks are complex and unoptimized.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE SAAS SOLUTIONS -->
+    <section class="section-wrapper">
+        <div class="container">
+            <h2 class="section-title">The Complete Platform Features</h2>
+            
+            <div class="features-grid">
+                <!-- Shared Family Access -->
+                <div class="feature-card">
+                    <div class="feature-icon">👪</div>
+                    <h3>Shared Collaborative Access</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">A single dynamic family dashboard. Check off tasks, log meals, and align everyone on care routines in real time.</p>
+                </div>
+                <!-- Centralized Medical Ledger Storage -->
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Centralized Ledger Storage</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">An encrypted file locker built exclusively for your pet's health records, vaccine cards, and medication timeline logs.</p>
+                </div>
+                <!-- Unlimited Tele-Vet Consultation -->
+                <div class="feature-card">
+                    <div class="feature-icon">🩺</div>
+                    <h3>Unlimited Tele-Vet Desk</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Skip stress and expensive clinical visits. Connect instantly with trusted digital vet professionals whenever something seems off.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: UNIFIED PRICING MATRIX -->
+    <section class="section-wrapper" style="background-color: rgba(0,0,0,0.15); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <h2 class="section-title">Simple, Uncompromised Tiers</h2>
+            <p class="section-subtitle">Lock in your platform utility or transition directly into embedded health safety wrappers.</p>
+
+            <div class="pricing-matrix">
                 
-                <!-- CARD 1: SURGICAL & ACCIDENT COVER -->
-                <div class="pricing-card">
-                    <div class="card-mascot">🐶</div>
+                <!-- TIER 1: CORE SAAS ACCESS -->
+                <div class="matrix-card">
                     <div>
-                        <h3 class="card-title" style="color: var(--pink-main);">Surgical &amp; Accident Cover</h3>
-                        <p class="card-desc">Comprehensive structural protection covering emergency hospitalizations, traumatic accidents, and critical operations.</p>
+                        <h3 style="color: var(--pink-main); margin-top:0;">Core Utility SaaS</h3>
+                        <span class="old-price">Normal Price: ₹249/mo</span>
+                        <div class="main-price">₹149/-</div>
+                        <div class="sub-tier-info">3-Month Entry Pass Available</div>
                         
-                        <div class="price-wrapper">
-                            <span class="original-price">Real Stated Price: ₹4,999/-</span>
-                            <div class="tier-box">
-                                <span class="offer-price">₹3,499/-</span>
-                                <span class="slots-badge">First 999 Members</span>
-                            </div>
-                            <div class="next-tier">Standard Price Later: <strong>₹3,999/-</strong></div>
-                        </div>
-
-                        <ul class="perks-group">
-                            <li class="perks-row"><span class="perks-bullet">🛡️</span> Annual Protection Limit: ₹1 Lakh</li>
-                            <li class="perks-row"><span class="perks-bullet">⚡</span> Major Surgical Procedures Covered</li>
-                            <li class="perks-row"><span class="perks-bullet">🩺</span> Accident Trauma Care Coverage</li>
-                            <li class="perks-row"><span class="perks-bullet">📋</span> Rapid Digital Medical Ledger Integration</li>
+                        <ul class="matrix-list">
+                            <li>✔️ Shared Family Dashboard</li>
+                            <li>✔️ Ledger Document Storage</li>
+                            <li>✔️ Instant Routine Reminders</li>
                         </ul>
                     </div>
-                    <button class="cta-button">Claim Early Offer</button>
+                    <button class="submit-btn" style="padding:12px;" onclick="location.href='#join'">Reserve SaaS Pass</button>
                 </div>
 
-                <!-- CARD 2: ALL-INCLUSIVE COMPREHENSIVE COVER -->
-                <div class="pricing-card premium-card">
-                    <div class="card-mascot">🐕‍🦺</div>
+                <!-- TIER 2: SAAS + UNLIMITED TELEVET -->
+                <div class="matrix-card">
+                    <span class="matrix-badge">Best Value</span>
                     <div>
-                        <h3 class="card-title" style="color: var(--blue-neon);">All-Inclusive Cover</h3>
-                        <p class="card-desc">The complete premium umbrella ecosystem safeguarding your pet against routine checkups, illnesses, and everyday veterinary treatments.</p>
+                        <h3 style="color: var(--pink-main); margin-top:0;">Premium Vet-SaaS</h3>
+                        <span class="old-price">Normal Price: ₹499/mo</span>
+                        <div class="main-price">₹299/-</div>
+                        <div class="sub-tier-info">Monthly recurring utility model</div>
                         
-                        <div class="price-wrapper">
-                            <span class="original-price">Real Stated Price: ₹7,999/-</span>
-                            <div class="tier-box">
-                                <span class="offer-price">₹6,499/-</span>
-                                <span class="slots-badge">First 499 Members</span>
-                            </div>
-                            <div class="next-tier">Standard Price Later: <strong>₹6,999/-</strong></div>
-                        </div>
-
-                        <ul class="perks-group">
-                            <li class="perks-group-item perks-row"><span class="perks-bullet">✨</span> Annual Protection Limit: ₹1 Lakh</li>
-                            <li class="perks-group-item perks-row"><span class="perks-bullet">🏥</span> 100% Comprehensive Coverage (Everything)</li>
-                            <li class="perks-group-item perks-row"><span class="perks-bullet">💬</span> OPD Consultations &amp; Checkups</li>
-                            <li class="perks-group-item perks-row"><span class="perks-bullet">💊</span> Prescription Medicines &amp; Diagnostics</li>
+                        <ul class="matrix-list">
+                            <li>✔️ <strong>Unlimited Tele-Vet Desk</strong></li>
+                            <li>✔️ Everything in Utility SaaS</li>
+                            <li>✔️ High Priority Queue Connect</li>
                         </ul>
                     </div>
-                    <button class="cta-button">Secure Premium Access</button>
+                    <button class="submit-btn" style="padding:12px;" onclick="location.href='#join'">Reserve Vet Pass</button>
+                </div>
+
+                <!-- TIER 3: SURGICAL + ACCIDENT COVER -->
+                <div class="matrix-card insurance-type">
+                    <span class="matrix-badge">First 999 Slots</span>
+                    <div>
+                        <h3 style="color: var(--blue-neon); margin-top:0;">Surgical Protection</h3>
+                        <span class="old-price">Real Price: ₹4,999/yr</span>
+                        <div class="main-price">₹3,499/-</div>
+                        <div class="sub-tier-info">Next Tier Price: ₹3,999/-</div>
+                        
+                        <ul class="matrix-list">
+                            <li>🛡️ <strong>₹1 Lakh Yearly Cover</strong></li>
+                            <li>✔️ Emergency Surgeries</li>
+                            <li>✔️ Accident Trauma Coverage</li>
+                            <li>✔️ SaaS Core Features Included</li>
+                        </ul>
+                    </div>
+                    <button class="submit-btn" style="padding:12px; background: var(--blue-neon); color: var(--navy-bg);" onclick="location.href='#join'">Lock Early Bird</button>
+                </div>
+
+                <!-- TIER 4: COMPREHENSIVE ALL-INCLUSIVE -->
+                <div class="matrix-card insurance-type">
+                    <span class="matrix-badge">First 499 Slots</span>
+                    <div>
+                        <h3 style="color: var(--blue-neon); margin-top:0;">All-Inclusive Umbrella</h3>
+                        <span class="old-price">Real Price: ₹7,999/yr</span>
+                        <div class="main-price">₹6,499/-</div>
+                        <div class="sub-tier-info">Next Tier Price: ₹6,999/-</div>
+                        
+                        <ul class="matrix-list">
+                            <li>✨ <strong>₹1 Lakh Comprehensive Cover</strong></li>
+                            <li>✔️ <strong>100% Everything Covered</strong></li>
+                            <li>✔️ OPD Clinic Consultations</li>
+                            <li>✔️ Medicines &amp; Diagnostics</li>
+                        </ul>
+                    </div>
+                    <button class="submit-btn" style="padding:12px; background: var(--blue-neon); color: var(--navy-bg);" onclick="location.href='#join'">Lock Premium Umbrella</button>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- FOOTER AREA -->
+    <footer style="text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05);">
+        &copy; 2026 PetHubX. All Rights Reserved. Built for Seamless Pet Care Coexistence.
+    </footer>
 
 </body>
 </html>
